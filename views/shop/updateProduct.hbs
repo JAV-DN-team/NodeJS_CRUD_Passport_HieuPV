@@ -1,0 +1,41 @@
+<html>
+<style>
+    .bg-img {
+        /* The image used */
+        background-image: url({{product.image_path}});
+        min-height: 660px;
+
+        /* Center and scale the image nicely */
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+<body>
+<div class="bg-img">
+    <form action="../../product/update" method="post" enctype="application/x-www-form-urlencoded">
+        <div class="container1">
+            <h1>Update Product</h1>
+            <label for="email"><b>Title (*)</b></label>
+            <input type="text" name="txtTitle" placeholder="Enter Title" value="{{product.title}}" required>
+
+            <label for="psw"><b>ImagePath (*)</b></label>
+            <input type="text" name="txtImagePath" placeholder="Enter ImagePath" value="{{product.image_path}}" required>
+
+            <label for="psw"><b>Description (*)</b></label>
+            <input type="text" name="txtDescription" placeholder="Enter Description" value="{{product.description}}" required>
+
+            <label for="psw"><b>Price (*)</b></label>
+            <input type="text" name="txtPrice" placeholder="Enter Price" value="{{product.price}}" required>
+
+            <label><b>Made</b></label>
+            <input type="text" name="txtMade" placeholder="Enter Made" value="{{product.made}}">
+
+            <input type="hidden" name="id" value="{{product.id}}">
+            <button type="submit" class="btn-add">Update</button>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

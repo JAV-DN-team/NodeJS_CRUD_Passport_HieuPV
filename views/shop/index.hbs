@@ -1,0 +1,65 @@
+{{# each products}}
+    <div class="row">
+        {{# each this }}
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="{{this.image_path}}" alt="..." class="img-responsive img-detail">
+                <div class="caption">
+                    <h3>{{this.title}}</h3>
+                    <p>
+                    <div class="description Cdiv">
+                        {{this.description}}
+                    </div>
+                    </p>
+                    <div class="clearfix">
+                        <div class="price pull-left">Price : $ {{this.price}}</div><br>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <!--<button type="button" class="btn btn-success pull-right"><i class="fa fa-shopping-cart"></i> Add To Cart</button>-->
+                    <a href="../addCart/{{this.title}}" class="btn btn-primary"><span class="fa fa-shopping-cart"></span> Add To Cart </a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#product_view{{this.id}}"><i class="fa fa-search"></i> Quick View</button>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{# each this }}
+    <div class="modal fade product_view" id="product_view{{this.id}}">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                    <h3 class="modal-title">{{this.title}}</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1 product_img">
+                            <img src="{{this.image_path}}" alt="..." class="img-responsive">
+                        </div>
+                        <div class="col-md-6 product_content">
+                            <h4>Product Id: <span>{{this.id}}</span></h4>
+                            <div class="rating">
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                (10 reviews)
+                            </div>
+                            <p>{{this.description}}</p>
+                            <h3 class="cost"><span class="glyphicon glyphicon-usd"></span> {{this.price}} <small class="pre-cost"></small></h3>
+                            <div class="space-ten"></div>
+                            <div class="btn-ground">
+                                <a href="../product/update/{{this.id}}" class="btn btn-primary"><span class="fas fa-edit"></span> Update </a>
+                                <a href="../product/delete/{{this.id}}" class="btn btn-primary" onclick="return deleteProduct()"><span class="far fa-trash-alt"></span> Delete </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+{{/each}}
+<script type="text/javascript" src="/javascripts/index.js"></script>
